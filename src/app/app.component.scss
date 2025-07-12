@@ -1,0 +1,16 @@
+.nav-ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background: #ccc;
+    padding-left: 0;
+
+    &>li {
+        padding: 15px;
+        cursor: pointer;
+    }
+
+    &>li:hover {
+        background: #ddd;
+    } 
+}

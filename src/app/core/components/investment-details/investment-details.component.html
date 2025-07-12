@@ -1,0 +1,71 @@
+<div class="investment-form--wrapper" *ngIf="!isPreview">
+    <form [formGroup]="investmentForm" class="investment-form">
+        <div>
+            <div>
+                <label for="assetType">Asset Type: <span class="red">*</span></label>
+                <input id="assetType" type="text" formControlName="assetType" />
+            </div>
+
+            <span
+                *ngIf="investmentForm.controls['assetType'].hasError('required') && investmentForm.controls['assetType'].touched">Input
+                is required</span>
+        </div>
+        <div>
+            <div>
+                <label for="quantity">Quantity: <span class="red">*</span></label>
+                <input id="quantity" type="text" appNumbersOnlyWithDecimal formControlName="quantity" />
+            </div>
+
+            <span
+                *ngIf="investmentForm.controls['quantity'].hasError('required') && investmentForm.controls['quantity'].touched">Input
+                is required</span>
+        </div>
+        <div>
+            <div>
+                <label for="price">Price $: <span class="red">*</span></label>
+                <input id="price" type="text" appNumbersOnlyWithDecimal formControlName="purchasePrice" />
+            </div>
+
+            <span
+                *ngIf="investmentForm.controls['purchasePrice'].hasError('required') && investmentForm.controls['purchasePrice'].touched">Input
+                is required</span>
+        </div>
+        <div>
+            <div>
+                <label for="date">Date: <span class="red">*</span></label>
+                <input id="date" type="date" formControlName="purchaseDate" />
+            </div>
+
+            <span
+                *ngIf="investmentForm.controls['purchasePrice'].hasError('required') && investmentForm.controls['purchasePrice'].touched">Input
+                is required</span>
+        </div>
+
+    </form>
+    <button (click)="onSubmit()" class="submit-btn">Submit</button>
+</div>
+
+<div class="preview-container" *ngIf="isPreview">
+    <div>
+        <div>
+            <span>Asset Type: </span>
+            <span>{{commonService.getFormValues()?.assetType}}</span>
+        </div>
+        <div>
+            <span>Quantity: </span>
+            <span>{{commonService.getFormValues()?.quantity}}</span>
+        </div>
+        <div>
+            <span>Price: </span>
+            <span>{{commonService.getFormValues()?.purchasePrice}}</span>
+        </div>
+        <div>
+            <span>Date: </span>
+            <span>{{commonService.getFormValues()?.purchaseDate}}</span>
+        </div>
+    </div>
+    <div>
+        <button (click)="actions('confirm')">Confirm</button>
+        <button (click)="actions('back')">back</button>
+    </div>
+</div>
